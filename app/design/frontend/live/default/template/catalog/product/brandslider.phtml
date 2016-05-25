@@ -1,0 +1,39 @@
+<?php
+$mediaUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+$attribute = Mage::getModel('eav/entity_attribute')
+                ->loadByCode('catalog_product', 'manufacturer');
+
+$valuesCollection = Mage::getResourceModel('eav/entity_attribute_option_collection')
+            ->setAttributeFilter($attribute->getData('attribute_id'))
+            ->setStoreFilter(0, false);
+
+$preparedManufacturers = array();            
+foreach($valuesCollection as $value) {
+    $preparedManufacturers[$value->getOptionId()] = $value->getValue();
+}   
+
+function clean($string) {
+    $string = strtolower($string);
+    $string = str_replace(' ', '', $string); // Replaces all spaces with hyphens.
+
+    return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+}
+
+?>
+
+<div class="brandslider">
+    <h3><?php echo $this->__( $this->getLabel() ); ?></h3>
+    <div class="owl-carousel">
+        <?php foreach (range(1, 4) as $i) : ?>
+            <?php if (count($preparedManufacturers)) : ?>
+                <?php foreach($preparedManufacturers as $optionId => $value) : ?>
+                    <?php $brandName = clean($value); ?>
+                    <?php $brandFile = $mediaUrl.'wysiwyg/brands/'.$brandName.'.jpg'; ?>
+                    <?php if (file_exists($_SERVER['DOCUMENT_ROOT'].'/media/wysiwyg/brands/'.$brandName.'.jpg')) :?>
+                        <div class="item"><a href="/catalogsearch/advanced/result/?manufacturer=<?php echo $optionId; ?>"><img src="<?php echo $brandFile; ?>" alt="<?php echo $value; ?>"></a></div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>

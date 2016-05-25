@@ -1,0 +1,39 @@
+<?php
+$_categoryId = $this->getCategoryId();
+
+$_productCollection = Mage::getModel('catalog/category')->load($_categoryId)
+    ->getProductCollection()
+    ->setPageSize(3)
+    ->addAttributeToSelect('*')
+    ->addAttributeToFilter('status', 1)
+    ->addAttributeToFilter('visibility', 4)
+    ->setOrder('price', 'ASC');
+?>
+
+<div class="productlist">
+    <h3><?php echo $this->__( $this->getLabel() ); ?></h3>
+    <?php foreach (range(1, 4) as $i) : ?>
+    <?php foreach ($_productCollection as $_product): ?>
+
+        <div class="item">
+            <a class="product-image" href="<?php echo $_product->getProductUrl() ?>">
+                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')
+                													->constrainOnly(TRUE)
+																	->keepAspectRatio(TRUE)
+																	->keepFrame(FALSE)
+																	->resize(300, null);?>
+				" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')); ?>" />
+            </a>
+
+            <a class="product-name" href="<?php echo $_product->getProductUrl() ?>">
+            <?php echo $this->htmlEscape($_product->getName()); ?>
+
+            <?php $productBlock = $this->getLayout()->createBlock('catalog/product_price');
+                  echo $productBlock->getPriceHtml($_product); ?>
+            </a>
+
+
+        </div>
+    <?php endforeach; ?>
+    <?php endforeach; ?>
+</div>

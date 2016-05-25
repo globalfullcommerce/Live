@@ -1,0 +1,90 @@
+<?php
+$_categoryId = $this->getCategoryId();
+
+$_productCollection = Mage::getModel('catalog/category')->load($_categoryId)
+    ->getProductCollection()
+    ->addAttributeToSelect('*')
+    ->addAttributeToFilter('status', 1)
+    ->addAttributeToFilter('visibility', 4)
+    ->setOrder('price', 'ASC');
+
+?>
+
+<div class="productslider">
+    <h3><?php echo $this->__( $this->getLabel() ); ?></h3>
+    <div class="owl-carousel">
+        <?php foreach ($_productCollection as $_product): ?>
+            <?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
+            <div class="item">
+                <a class="product-image" href="<?php echo $_product->getProductUrl() ?>">
+                    <img <?php /* class="owl-lazy" */?> <?php /* data- */?>src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')
+                    													->constrainOnly(TRUE)
+    																	->keepAspectRatio(TRUE)
+    																	->keepFrame(FALSE)
+    																	->resize(250, null);?>
+    				" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')); ?>" />
+                </a>
+
+                <a class="product-name" href="<?php echo $_product->getProductUrl() ?>">
+                <?php echo $this->htmlEscape($_product->getName()); ?>
+
+                <?php
+                //$_product = $this->getProduct();
+
+                if (Mage::helper('configurableswatches')->isEnabled() && $_product && $_product->getId()
+                    && ($_attrValues = $_product->getListSwatchAttrValues()) && count($_attrValues) > 0):
+
+                    $_swatchAttribute = Mage::helper('configurableswatches/productlist')->getSwatchAttribute();
+
+                    $_dimHelper = Mage::helper('configurableswatches/swatchdimensions');
+                    $_swatchInnerWidth = $_dimHelper->getInnerWidth(Mage_ConfigurableSwatches_Helper_Swatchdimensions::AREA_LISTING);
+                    $_swatchInnerHeight = $_dimHelper->getInnerHeight(Mage_ConfigurableSwatches_Helper_Swatchdimensions::AREA_LISTING);
+                    $_swatchOuterWidth = $_dimHelper->getOuterWidth(Mage_ConfigurableSwatches_Helper_Swatchdimensions::AREA_LISTING);
+                    $_swatchOuterHeight = $_dimHelper->getOuterHeight(Mage_ConfigurableSwatches_Helper_Swatchdimensions::AREA_LISTING);
+                ?>
+                <ul class="configurable-swatch-list configurable-swatch-<?php echo $_swatchAttribute->getAttributeCode() ?> clearfix">
+                    <?php foreach ($_attrValues as $_optionValue => $_optionLabel): ?>
+                        <?php
+                        $_optionCode = Mage::helper('configurableswatches')->getHyphenatedString($_optionLabel);
+                        $_swatchUrl = Mage::helper('configurableswatches/productimg')->getSwatchUrl($_product, $_optionLabel, $_swatchInnerWidth, $_swatchInnerHeight, $_swatchType);
+                        $_hasImage = !empty($_swatchUrl);
+                        $_liClasses = array();
+                        $_aClass = 'swatch-link swatch-link-' . $_swatchAttribute->getId();
+                        if ($_hasImage) {
+                            if ($_swatchType == 'media') {
+                                $_liClasses[] = 'is-media';
+                            }
+                            $_aClass .= ' has-image';
+                        } elseif (strlen($_optionLabel) > 3) {
+                            $_liClasses[] = 'wide-swatch';
+                        }
+                        if (Mage::helper('configurableswatches/productlist')->swatchMatchesFilter($_optionValue)) {
+                            $_liClasses[] = 'filter-match';
+                        }
+                        $_liClass = (!empty($_liClasses)) ? ' ' . implode(' ', $_liClasses) : '';
+                        ?>
+                    <li class="option-<?php echo $_optionCode; ?><?php echo $_liClass; ?>" data-product-id="<?php echo $_product->getId() ?>" data-option-label="<?php echo $_optionLabel ?>">
+                        <span href="javascript:void(0)" name="<?php echo $_optionCode; ?>" class="<?php echo $_aClass ?>" title="<?php echo $_optionLabel; ?>"
+                               style="height: <?php echo $_swatchOuterHeight ?>px; <?php if (!$_hasImage): ?>min-<?php endif; ?>width: <?php echo $_swatchOuterWidth ?>px;">
+                            <span class="swatch-label" style="height: <?php echo $_swatchInnerHeight ?>px; <?php if (!$_hasImage): ?>min-<?php endif; ?>width: <?php echo $_swatchInnerWidth ?>px; line-height: <?php echo $_swatchInnerHeight ?>px;">
+                            <?php if ($_hasImage): ?>
+                                <img src="<?php echo $_swatchUrl; ?>" alt="<?php echo $_optionLabel; ?>" width="<?php echo $_swatchInnerWidth ?>" height="<?php echo $_swatchInnerHeight ?>" />
+                            <?php else: ?>
+                                <?php echo $_optionLabel; ?>
+                            <?php endif; ?>
+                             </span>
+                        </span>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+                <?php endif; ?>
+
+                <?php $productBlock = $this->getLayout()->createBlock('catalog/product_price');
+                      echo $productBlock->getPriceHtml($_product); ?>
+                </a>
+
+
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

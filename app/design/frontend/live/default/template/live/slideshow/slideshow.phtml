@@ -1,0 +1,33 @@
+<?php if($tmp = $this->getLayout()->createBlock('cms/block')->setBlockId("home_slideshow")->toHtml()): ?>
+<div class="owl-carousel homeslideshow">
+    <?php echo $tmp; ?>
+</div>
+
+<?php if($tmp = $this->getLayout()->createBlock('cms/block')->setBlockId("info_banner")->toHtml()): ?>
+<div class="info-banner" style="border-bottom: 1px solid #D4D4D4;">
+	<div class="main-container">
+    	<?php echo $tmp; ?>
+	</div>
+</div>
+<?php endif; ?>
+
+<?php endif; ?>
+
+<?php if($tmp = $this->getLayout()->createBlock('cms/block')->setBlockId("home_blockslideshow")->toHtml()): ?>
+<div class="main-container">
+	<div class="owl-carousel homeslideshow">
+	    <?php echo $tmp; ?>
+	</div>	
+</div>
+
+<?php if($tmp = $this->getLayout()->createBlock('cms/block')->setBlockId("info_banner")->toHtml()): ?>
+<div class="info-banner">
+	<div class="main-container">
+    	<?php echo $tmp; ?>
+	</div>
+</div>
+<?php endif; ?>
+
+<?php endif; ?>
+
+

@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<layout version="0.1.0">
+    <!--
+    Default layout, loads most of the pages
+    -->
+
+    <default translate="label" module="page">
+        <label>All Pages</label>
+        <block type="page/html" name="root" output="toHtml" template="page/1column.phtml">
+
+            <block type="page/html_head" name="head" as="head">
+
+	           	<!-- rwd js here -->
+                <action method="addJs"><script>prototype/prototype.js</script></action>
+                <action method="addJs"><script>lib/jquery/jquery-1.10.2.min.js</script></action>
+                <action method="addJs"><script>lib/jquery/noconflict.js</script></action>
+                <action method="addJs"><script>lib/ccard.js</script></action>
+                <action method="addJs"><script>mage/translate.js</script></action>
+                <action method="addJs"><script>mage/cookies.js</script></action>
+            
+                <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
+
+                <!-- Remove items which the RWD package is not dependent upon -->
+                <action method="removeItem"><type>skin_js</type><name>js/ie6.js</name></action>
+
+                <!-- vendor dependencies  here -->
+
+                <!-- Sets viewport meta tag using text block -->
+                <block type="core/text" name="head.viewport">
+                    <action method="setText"><text><![CDATA[<meta name="viewport" content="initial-scale=1.0, width=device-width" />]]>&#10;</text></action>
+                </block>
+                <block type="core/text" name="container.critical.css">
+                    <action method="setText"><text><![CDATA[<style>.container,.main-container,.footer-container{max-width:1400px;margin:0 auto;padding:0 3em;}</style>]]>&#10;</text></action>
+                </block>
+
+                <block type="core/text" name="critical.css">
+                    <action method="setText"><text><![CDATA[<style>header,nav{display:block}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}h1{font-size:2em}strong{font-weight:bold}small{font-size:80%}img{border:0}button,input{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button{-webkit-appearance:button}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}*,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}body{background:#FFFFFF;color:#000000;line-height:1}html,body,img{border:0}h1{font-size:100%;font-weight:normal}img{display:block}ol,ul{list-style:none}input[type="search"]{-webkit-appearance:none;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}@-ms-viewport{width:device-width}@-o-viewport{width:device-width}@viewport{width:device-width}a,button{-ms-touch-action:manipulation;touch-action:manipulation}body,button,input{font-family:"PT Sans",Verdana,Arial,sans-serif;color:#636363;font-size:14px;line-height:1.5}a{color:#A0A0A0;text-decoration:none}ol,ul{list-style:none;margin:0;padding:0}h1{margin:0;margin-bottom:0.7em;color:#3399cc;font-family:"PT Sans","Helvetica Neue",Verdana,Arial,sans-serif;font-size:28px;font-weight:400;font-style:normal;line-height:1.2;text-rendering:optimizeLegibility;text-transform:uppercase}.page-title h1{text-transform:uppercase;font-size:24px;font-weight:600;color:#636363;border-bottom:1px solid #ededed;padding-bottom:3px;margin-bottom:15px;text-transform:uppercase}.block{margin-bottom:20px}.block-subtitle{font-weight:bold;margin-bottom:7px}.button{background:#010101;display:inline-block;padding:7px 15px;border:0;color:#FFFFFF;font-size:13px;font-weight:normal;font-family:"PT Sans","Helvetica Neue",Verdana,Arial,sans-serif;line-height:19px;text-align:center;text-transform:uppercase;vertical-align:middle;white-space:nowrap}.breadcrumbs{overflow:hidden;margin:-15px 0 15px;padding:0 0.1em}.breadcrumbs li{float:left;font-size:12px;font-family:"PT Sans","Helvetica Neue",Verdana,Arial,sans-serif;text-transform:uppercase}.breadcrumbs a{float:left;color:#D2D2D2}.breadcrumbs strong{color:#D2D2D2;font-weight:normal}.breadcrumbs span{float:left;padding:0 7px;color:#D2D2D2}@media only screen and (max-width:770px){.breadcrumbs{display:none}}.page-header-container,#nav{max-width:1400px;margin:0 auto;clear:both}@media only screen and (min-width:771px){.page-header-container,#nav{padding:0 2.4em}}.main-container{max-width:1400px}.main-container{position:relative;margin:0 auto;padding:15px}.main-container:after{content:'';display:table;clear:both}@media only screen and (min-width:480px){.main-container{padding:1% 3em;clear:both}}.main:after{content:'';display:table;clear:both}.col-main{padding:0 10px}.col-main{float:left;width:82.3%}.col2-right-layout .col-main{padding-left:0}@media only screen and (max-width:770px){.col-main,.col2-right-layout .col-main{padding:0;margin-bottom:10px;float:none;width:auto}.col-main{float:none;width:auto}}.std p{margin:0 0 1.5em}.input-box{padding-top:2px}.input-box:after{content:'';display:table;clear:both}label{display:inline-block;font-size:13px;font-family:"PT Sans","Helvetica Neue",Verdana,Arial,sans-serif;font-weight:600}.input-text{-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;-o-border-radius:2px;border-radius:0;border:1px solid #DEDEDE;background:#FFFFFF;font-size:15px}input[type=search]{height:30px;padding:0 8px}input[type=search]{width:365px;max-width:100%}@media only screen and (max-device-width:568px) and (-webkit-min-device-pixel-ratio:0){input[type=search]{font-size:16px}}::-webkit-input-placeholder{color:#a0a0a0}input:-moz-placeholder{color:#a0a0a0}html,body{height:100%}.wrapper{min-width:320px;min-height:100%;margin:0 auto;background:#FFFFFF}.wrapper:after{content:'';display:table;clear:both}#top-header{display:none}.separator{display:inline-block;color:transparent;width:.7em}#top-header p{display:inline-block}#top-header .left{float:left;width:auto}#top-header .right{float:right;width:auto}@media only screen and (min-width:771px){.page-header{margin:0 auto;padding:0.5em 2.3em}.page-header-container{position:relative}#top-header{background-color:#F3F3F3;float:left;width:100%;color:#A2A2A2;display:block;font-size:0.9em;padding:0.3em 0em 0.2em 0em}}.page-header{font-family:"PT Sans","Helvetica Neue",Verdana,Arial,sans-serif;float:left;width:100%}@media (min-width:768px){.page-header{padding:0.9em 0}}.page-header-container .store-language-container{display:none!important;float:right;max-width:35%;padding:13px 15px 10px 10px}@media only screen and (max-width:479px){.page-header-container .store-language-container{padding-top:8px}}.logo{min-height:44px;text-align:center;padding:0.2em 0;max-width:18em;display:block;margin:0 auto}.logo img{max-width:100%}.logo .small{display:block;margin:0 auto}.logo .large{display:none}@media only screen and (min-width:771px){.logo{max-width:300px;min-height:4.2em;float:left}.logo .small{display:none}.logo .large{display:block;max-width:11.8em;padding:0.2em 0.8em}}.skip-links{overflow:hidden;border-top:1px solid #EDEDED;border-bottom:1px solid #EDEDED;line-height:3em}@media only screen and (min-width:771px){.skip-links{border:0;float:right;display:inline-block;width:auto;line-height:1em;font-size:1.1em}.account-cart-wrapper{display:flex;float:right;padding:1.2em 0}}.skip-link{position:relative;float:left;width:25%;background:#FFFFFF;color:#A0A0A2;line-height:auto;text-align:center;font-size:1.1em}a.skip-link{text-decoration:none}@media only screen and (max-width:770px){.skip-links{width:100%}.skip-link{border-right:1px solid #EDEDED}}@media only screen and (min-width:500px){.skip-link{width:25%}}.skip-link .label{display:none}@media only screen and (min-width:500px){.skip-link .label{display:inline;font-size:0.9em}}.skip-content{display:none}@media only screen and (max-width:770px){#header-account li a,.nav-primary a.level0{padding:0 15px 0 25px;border-bottom:1px solid #cccccc;text-align:left;color:#636363;text-transform:uppercase;line-height:30px}#header-account li:last-child a,.nav-primary li.level0:last-child a.level0{border-bottom:0}}@media only screen and (max-width:770px){.account-cart-wrapper{position:static}}.skip-nav{width:25%}@media only screen and (min-width:500px){.skip-nav{width:25%}}@media only screen and (min-width:771px){.skip-nav{display:none}}@media only screen and (max-width:770px){#header-nav{padding:0 2.3em}}@media only screen and (min-width:771px){#header-nav{display:block;margin:inherit;background:#FFFFFF;float:left;width:100%}}@media only screen and (min-width:771px){.nav-primary{display:block;margin-top:0}}.nav-primary a{text-decoration:none;position:relative;display:block;color:#484848;line-height:2em;font-family:"PT Sans",Verdana,Arial,sans-serif;font-size:1em;font-weight:500}.nav-primary li{position:relative}.nav-primary li.level1 a{border-bottom:1px solid #cccccc}.nav-primary li.level0 > a{text-transform:uppercase}.nav-primary li.level0 > a:first-child{}@media only screen and (max-width:770px){.nav-primary a.level0,.nav-primary a{line-height:35px}.nav-primary li.level0 ul{display:none}.nav-primary li.level0 li{padding:0 0 0 25px}.nav-primary li.level1 a{padding:0 15px 0 25px}.nav-primary li.parent > a:after{content:'';position:absolute;width:0;height:0;display:block;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:5px solid #cccccc;border-right:none;top:50%;left:10px;right:auto;margin-top:-5px}}@media only screen and (min-width:771px){.nav-primary{}.nav-primary a.level0{padding:0 0.6em;color:#808080}.nav-primary li.level0,.nav-primary a.level0{display:inline-block}.nav-primary li:last-child > a{border-bottom:none}.nav-primary li.level0 ul{background:#FBFBFB;border:solid 1px #cccccc;position:absolute;left:0;top:28px;z-index:10;width:250px;padding-left:10px;padding-right:10px;display:none}}@media only screen and (min-width:771px){.skip-search{display:none}}#header-search{padding:1.6em}@media only screen and (min-width:771px){#header-search{width:40%;margin-right:1.1em;margin-left:0.9em;margin:0 auto;display:block;padding:0.5em 0}}@media only screen and (max-width:960px) and (min-width:771px){#header-search{float:right;margin-right:0.9em}}#search_mini_form .input-box{position:relative;padding-top:0;height:auto;display:inline-block;width:100%}#search_mini_form label{display:none}#search{width:100%;font-family:"PT Sans",Verdana,Arial,sans-serif;border:1px solid #D0D0D0;font-size:1.1em;padding:0.6em 0.8em;height:auto;border-radius:0.3em}#search_mini_form .search-button{position:absolute;top:0;color:#A0A0A2;right:0;border:0;background:none;font-size:1.4em;padding:0.6em 0.7em 0.6em 0.6em;border-left:1px solid rgba(204,204,204,0.48)}#search_mini_form .search-button:before{content:'';position:absolute;top:50%;left:50%;width:30px;height:30px;margin-top:-15px;margin-left:-15px;background-position:4px -146px}@media only screen and (min-width:771px){.skip-account .fa{}.skip-account{float:none;width:auto;vertical-align:top;display:inline-block;padding:0 0.4em}#header-account a{display:block;padding:5px 10px;color:#636363;line-height:2}}#header-account{padding:5px 0}#header-account a{position:relative;display:block;padding:5px 10px;line-height:23px;text-align:center}@media only screen and (min-width:771px){.skip-cart{width:auto;padding:0 10px}}.skip-cart .count{-webkit-border-radius:12px;-moz-border-radius:12px;-ms-border-radius:12px;-o-border-radius:12px;border-radius:12px;display:inline-block;top:-6px;position:relative;z-index:5;width:22px;height:22px;background:rgba(51,153,204,0.9);color:#FFFFFF;font-size:11px;line-height:22px;text-align:center;font-family:"PT Sans",Verdana,Arial,sans-serif}.skip-cart.no-count .count{display:none}@media only screen and (max-width:499px){.skip-cart .count{margin-left:-12px}}@media only screen and (min-width:771px){.skip-cart{color:#A0A0A2}.skip-cart .count{-webkit-border-radius:0px;-moz-border-radius:0px;-ms-border-radius:0px;-o-border-radius:0px;border-radius:0px;position:static;background:none;margin-left:0px;font-size:14px;width:auto}.skip-cart .count:before{content:'('}.skip-cart .count:after{content:')'}.skip-cart .count{color:#3399cc}}.footer .form-subscribe-header{display:none}@media only screen and (max-width:1240px){}#header-nav + .main-container{padding-top:0;padding-bottom:0}.header-minicart{display:inline-block}@media only screen and (max-width:770px){.header-minicart{display:block}}.header-minicart .minicart-message{display:block;padding:10px}.header-minicart .empty{padding:10px;text-align:center}.header-minicart .minicart-wrapper{clear:both;position:relative}.header-minicart .minicart-wrapper:before,.header-minicart .minicart-wrapper:after{content:'';position:absolute;top:0px;left:0px;width:100%;height:100%;display:none}.header-minicart .minicart-wrapper:before{background-color:white;opacity:0.8;z-index:2}.header-minicart .minicart-wrapper:after{background-image:url("../images/opc-ajax-loader.gif");background-repeat:no-repeat;background-position:center;z-index:3}.header-minicart .block-cart{display:none}.header-minicart .block-subtitle{color:#636363;font-family:"PT Sans",Verdana,Arial,sans-serif;font-size:10px;font-weight:bold;line-height:1.4;padding:5px;text-align:center;text-transform:uppercase;margin-bottom:0px}.header-minicart .block-subtitle .close{width:40px;float:right;display:block;color:#636363;text-decoration:none;font-weight:normal;font-size:30px;position:absolute;top:-8px;right:-3px}.header-minicart #minicart-error-message{text-align:center;color:red;display:none}.header-minicart #minicart-success-message{text-align:center;color:green;display:none}@media only screen and (max-width:479px){.header-minicart a.skip-cart{z-index:1}}@media only screen and (max-width:770px){.header-minicart .minicart-wrapper:before{background-color:#EDEDED}}.search-autocomplete{left:0!important;overflow:visible!important;position:relative!important;top:15px!important;width:100%!important;z-index:200}.cms-page-view .page-title h1{border:none}.cms-page-view .std p{color:#636363;font-family:"PT Sans",Verdana,Arial,sans-serif;font-size:14px;font-style:italic;line-height:24px}.cms-page-view .std h1{color:#3399cc}@font-face{font-family:'PT Sans';font-style:normal;font-weight:400;src:local('PT Sans'),local('PTSans-Regular'),url(http://fonts.gstatic.com/s/ptsans/v8/ATKpv8nLYAKUYexo8iqqrg.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215,U+E0FF,U+EFFD,U+F000}@font-face{font-family:'PT Sans';font-style:normal;font-weight:700;src:local('PT Sans Bold'),local('PTSans-Bold'),url(http://fonts.gstatic.com/s/ptsans/v8/0XxGQsSc1g4rdRdjJKZrNPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215,U+E0FF,U+EFFD,U+F000}</style>]]>&#10;</text></action>
+                </block>
+            </block>
+
+            <block type="core/text_list" name="after_body_start" as="after_body_start" translate="label">
+                <label>Page Top</label>
+            </block>
+
+            <block type="page/html_notices" name="global_notices" as="global_notices" template="page/html/notices.phtml" />
+
+            <block type="page/html_header" name="header" as="header">
+                <block type="page/template_links" name="top.links" as="topLinks"/>
+                <block type="page/switch" name="store_language" as="store_language" template="page/switch/languages.phtml"/>
+                <block type="core/text_list" name="top.menu" as="topMenu" translate="label">
+                    <label>Navigation Bar</label>
+                    <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
+                        <block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml"/>
+                    </block>
+                </block>
+                <block type="page/html_wrapper" name="top.container" as="topContainer" translate="label">
+                    <label>Page Header</label>
+                    <action method="setElementClass"><value>top-container</value></action>
+                </block>
+                <block type="page/html_welcome" name="welcome" as="welcome"/>
+            </block>
+
+            <block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+
+            <block type="core/text_list" name="left_first" as="left_first" translate="label">
+                <label>Left Column First (shows above main column on smaller screens)</label>
+            </block>
+
+            <block type="core/text_list" name="left" as="left" translate="label">
+                <label>Left Column</label>
+            </block>
+
+            <block type="core/messages" name="global_messages" as="global_messages"/>
+            <block type="core/messages" name="messages" as="messages"/>
+
+            <block type="core/text_list" name="content" as="content" translate="label">
+                <label>Main Content Area</label>
+            </block>
+
+            <block type="core/text_list" name="right" as="right" translate="label">
+                <label>Right Column</label>
+            </block>
+
+            <block type="page/html_wrapper" name="footer.before" as="footer_before" translate="label">
+                <label>Page Footer</label>
+                <action method="setElementClass"><value>footer-before-container</value></action>
+            </block>
+
+            <block type="page/html_footer" name="footer" as="footer" template="page/html/footer.phtml">
+                <block type="page/html_wrapper" name="bottom.container" as="bottomContainer" translate="label">
+                    <label>Page Footer</label>
+                    <action method="setElementClass"><value>bottom-container</value></action>
+                </block>
+                <block type="page/switch" name="store_switcher" as="store_switcher" after="*" template="page/switch/stores.phtml"/>
+
+                <!-- This static block can be created and populated in admin. The footer_links cms block can be used as a starting point. -->
+                <!--<block type="cms/block" name="footer_social_links">
+                    <action method="setBlockId"><block_id>footer_social_links</block_id></action>
+                </block>-->
+            </block>
+
+            <block type="core/text_list" name="before_body_end" as="before_body_end" translate="label">
+
+                <block type="page/html_head" name="jsfooter" as="jsfooter" template="page/html/jsfooter.phtml">
+
+                	<!-- RWD JS -->
+                	<!-- product page only -->
+	                <action method="addItem"><type>skin_js</type><name>js/lib/elevatezoom/jquery.elevatezoom.js</name></action>
+	                
+	                <!-- Add vendor dependencies -->
+                	<action method="addJs"><script>prototype/validation.js</script></action>
+        			<action method="addJs"><script>scriptaculous/builder.js</script></action>
+        			<action method="addJs"><script>scriptaculous/effects.js</script></action>
+        			<action method="addJs"><script>scriptaculous/dragdrop.js</script></action>
+        			<action method="addJs"><script>scriptaculous/controls.js</script></action>
+        			<action method="addJs"><script>scriptaculous/slider.js</script></action>
+        			<action method="addJs"><script>varien/js.js</script></action>
+        			<action method="addJs"><script>varien/form.js</script></action>
+	                <action method="addItem"><type>skin_js</type><name>js/lib/modernizr.custom.min.js</name></action>
+	                <action method="addItem"><type>skin_js</type><name>js/lib/selectivizr.js</name></action>
+	                <action method="addItem"><type>skin_js</type><name>js/lib/matchMedia.js</name></action>
+	                <action method="addItem"><type>skin_js</type><name>js/lib/matchMedia.addListener.js</name></action>
+	                <action method="addItem"><type>skin_js</type><name>js/lib/enquire.js</name></action>
+	                <action method="addItem"><type>skin_js</type><name>js/app.js</name></action>
+	                <!--action method="addItem"><type>skin_js</type><name>js/lib/jquery.cycle2.min.js</name></action-->
+	                <!--action method="addItem"><type>skin_js</type><name>js/lib/jquery.cycle2.swipe.min.js</name></action-->
+	                <!--action method="addItem"><type>skin_js</type><name>js/slideshow.js</name></action-->
+	                <action method="addItem"><type>skin_js</type><name>js/lib/imagesloaded.js</name></action>
+	                <!--action method="addLinkRel"><rel>stylesheet</rel><href>//fonts.googleapis.com/css?family=Raleway:300,400,500,700,600</href></action-->
+	                <!--action method="addLinkRel"><rel>stylesheet</rel><href>//fonts.googleapis.com/css?family=Karla:400,700,400italic</href></action-->
+	                <action method="addItem"><type>skin_js</type><name>js/minicart.js</name></action>
+	                <!-- Add CSS  -->
+                    <action method="addItem"><type>skin_css</type><name>css/styles.css</name></action>
+	                <!--action method="addItem"><type>skin_css</type><name>css/custom.css</name></action-->
+                    
+                    <!-- Font Awesome -->
+                    <action method="addItem"><type>skin_css</type><name>fontawesome/css/font-awesome.min.css</name></action>
+
+                    <!-- Live Scripts -->
+                    <action method="addItem"><type>skin_js</type><name>js/live.js</name><params>async</params></action>
+
+                	<block type="page/html_head" name="js_magentolive" template="page/js/magentolive.phtml"/>
+
+                    <!-- Owl Carousel -->
+                    <action method="addItem"><type>skin_js</type><name>owlcarousel/owl.carousel.min.js</name></action>
+                    <action method="addItem"><type>skin_css</type><name>owlcarousel/assets/owl.carousel.css</name></action>
+
+
+                </block>
+
+                <label>Page Bottom</label>
+                <block type="page/html_cookieNotice" name="global_cookie_notice" as ="global_cookie_notice" template="page/html/cookienotice.phtml" before="-" />
+            </block>
+        </block>
+
+        <block type="core/profiler" output="toHtml" name="core_profiler"/>
+
+
+    </default>
+
+    <cms_index_index>
+        <reference name="head">
+            <!-- unset main critical css to load product critical css -->
+            <action method="unsetChild"><name>critical.css</name></action>
+            <block type="core/text" name="home.critical.css">
+                    <action method="setText">
+                        <text>
+                        <![CDATA[<style>header,nav{display:block}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}img{border:0}button,input{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button{-webkit-appearance:button}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}*,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}body{background:#FFFFFF;color:#000000;line-height:1}html,body,img{border:0}img{display:block}ol,ul{list-style:none}input[type="search"]{-webkit-appearance:none;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}@-ms-viewport{width:device-width}@-o-viewport{width:device-width}@viewport{width:device-width}a,button{-ms-touch-action:manipulation;touch-action:manipulation}body,button,input{font-family:"PT Sans",Verdana,Arial,sans-serif;color:#636363;font-size:14px;line-height:1.5}a{color:#A0A0A0;text-decoration:none}ol,ul{list-style:none;margin:0;padding:0}.block{margin-bottom:20px}.block-subtitle{font-weight:bold;margin-bottom:7px}.button{background:#010101;display:inline-block;padding:7px 15px;border:0;color:#FFFFFF;font-size:13px;font-weight:normal;font-family:"PT Sans","Helvetica Neue",Verdana,Arial,sans-serif;line-height:19px;text-align:center;text-transform:uppercase;vertical-align:middle;white-space:nowrap}.page-header-container,#nav{max-width:1400px;margin:0 auto;clear:both}@media only screen and (min-width:771px){.page-header-container,#nav{padding:0 2.4em}}.main-container{max-width:1400px}.main-container{position:relative;margin:0 auto;padding:15px}.main-container:after{content:'';display:table;clear:both}@media only screen and (min-width:480px){.main-container{padding:1% 3em;clear:both}}.input-box{padding-top:2px}.input-box:after{content:'';display:table;clear:both}label{display:inline-block;font-size:13px;font-family:"PT Sans","Helvetica Neue",Verdana,Arial,sans-serif;font-weight:600}.input-text{-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;-o-border-radius:2px;border-radius:0;border:1px solid #DEDEDE;background:#FFFFFF;font-size:15px}input[type=search]{height:30px;padding:0 8px}input[type=search]{width:365px;max-width:100%}@media only screen and (max-device-width:568px) and (-webkit-min-device-pixel-ratio:0){input[type=search]{font-size:16px}}::-webkit-input-placeholder{color:#a0a0a0}input:-moz-placeholder{color:#a0a0a0}html,body{height:100%}.wrapper{min-width:320px;min-height:100%;margin:0 auto;background:#FFFFFF}.wrapper:after{content:'';display:table;clear:both}#top-header{display:none}.separator{display:inline-block;color:transparent;width:.7em}#top-header p{display:inline-block}#top-header .left{float:left;width:auto}#top-header .right{float:right;width:auto}@media only screen and (min-width:771px){.page-header{margin:0 auto;padding:0.5em 2.3em}.page-header-container{position:relative}#top-header{background-color:#F3F3F3;float:left;width:100%;color:#A2A2A2;display:block;font-size:0.9em;padding:0.3em 0em 0.2em 0em}}.page-header{font-family:"PT Sans","Helvetica Neue",Verdana,Arial,sans-serif;float:left;width:100%}@media (min-width:768px){.page-header{padding:0.9em 0}}.page-header-container .store-language-container{display:none!important;float:right;max-width:35%;padding:13px 15px 10px 10px}@media only screen and (max-width:479px){.page-header-container .store-language-container{padding-top:8px}}.logo{min-height:44px;text-align:center;padding:0.2em 0;max-width:18em;display:block;margin:0 auto}.logo img{max-width:100%}.logo .small{display:block;margin:0 auto}.logo .large{display:none}@media only screen and (min-width:771px){.logo{max-width:300px;min-height:4.2em;float:left}.logo .small{display:none}.logo .large{display:block;max-width:11.8em;padding:0.2em 0.8em}}.skip-links{overflow:hidden;border-top:1px solid #EDEDED;border-bottom:1px solid #EDEDED;line-height:3em}@media only screen and (min-width:771px){.skip-links{border:0;float:right;display:inline-block;width:auto;line-height:1em;font-size:1.1em}.account-cart-wrapper{display:flex;float:right;padding:1.2em 0}}.skip-link{position:relative;float:left;width:25%;background:#FFFFFF;color:#A0A0A2;line-height:auto;text-align:center;font-size:1.1em}a.skip-link{text-decoration:none}@media only screen and (max-width:770px){.skip-links{width:100%}.skip-link{border-right:1px solid #EDEDED}}@media only screen and (min-width:500px){.skip-link{width:25%}}.skip-link .label{display:none}@media only screen and (min-width:500px){.skip-link .label{display:inline;font-size:0.9em}}.skip-content{display:none}@media only screen and (max-width:770px){#header-account li a,.nav-primary a.level0{padding:0 15px 0 25px;border-bottom:1px solid #cccccc;text-align:left;color:#636363;text-transform:uppercase;line-height:30px}#header-account li:last-child a,.nav-primary li.level0:last-child a.level0{border-bottom:0}}@media only screen and (max-width:770px){.account-cart-wrapper{position:static}}.skip-nav{width:25%}@media only screen and (min-width:500px){.skip-nav{width:25%}}@media only screen and (min-width:771px){.skip-nav{display:none}}@media only screen and (max-width:770px){#header-nav{padding:0 2.3em}}@media only screen and (min-width:771px){#header-nav{display:block;margin:inherit;background:#FFFFFF;float:left;width:100%}}@media only screen and (min-width:771px){.nav-primary{display:block;margin-top:0}}.nav-primary a{text-decoration:none;position:relative;display:block;color:#484848;line-height:2em;font-family:"PT Sans",Verdana,Arial,sans-serif;font-size:1em;font-weight:500}.nav-primary li{position:relative}.nav-primary li.level1 a{border-bottom:1px solid #cccccc}.nav-primary li.level0 > a{text-transform:uppercase}.nav-primary li.level0 > a:first-child{}@media only screen and (max-width:770px){.nav-primary a.level0,.nav-primary a{line-height:35px}.nav-primary li.level0 ul{display:none}.nav-primary li.level0 li{padding:0 0 0 25px}.nav-primary li.level1 a{padding:0 15px 0 25px}.nav-primary li.parent > a:after{content:'';position:absolute;width:0;height:0;display:block;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:5px solid #cccccc;border-right:none;top:50%;left:10px;right:auto;margin-top:-5px}}@media only screen and (min-width:771px){.nav-primary{}.nav-primary a.level0{padding:0 0.6em;color:#808080}.nav-primary li.level0,.nav-primary a.level0{display:inline-block}.nav-primary li:last-child > a{border-bottom:none}.nav-primary li.level0 ul{background:#FBFBFB;border:solid 1px #cccccc;position:absolute;left:0;top:28px;z-index:10;width:250px;padding-left:10px;padding-right:10px;display:none}}@media only screen and (min-width:771px){.skip-search{display:none}}#header-search{padding:1.6em}@media only screen and (min-width:771px){#header-search{width:40%;margin-right:1.1em;margin-left:0.9em;margin:0 auto;display:block;padding:0.5em 0}}@media only screen and (max-width:960px) and (min-width:771px){#header-search{float:right;margin-right:0.9em}}#search_mini_form .input-box{position:relative;padding-top:0;height:auto;display:inline-block;width:100%}#search_mini_form label{display:none}#search{width:100%;font-family:"PT Sans",Verdana,Arial,sans-serif;border:1px solid #D0D0D0;font-size:1.1em;padding:0.6em 0.8em;height:auto;border-radius:0.3em}#search_mini_form .search-button{position:absolute;top:0;color:#A0A0A2;right:0;border:0;background:none;font-size:1.4em;padding:0.6em 0.7em 0.6em 0.6em;border-left:1px solid rgba(204,204,204,0.48)}#search_mini_form .search-button:before{content:'';position:absolute;top:50%;left:50%;width:30px;height:30px;margin-top:-15px;margin-left:-15px;background-position:4px -146px}@media only screen and (min-width:771px){.skip-account .fa{}.skip-account{float:none;width:auto;vertical-align:top;display:inline-block;padding:0 0.4em}#header-account a{display:block;padding:5px 10px;color:#636363;line-height:2}}#header-account{padding:5px 0}#header-account a{position:relative;display:block;padding:5px 10px;line-height:23px;text-align:center}@media only screen and (min-width:771px){.skip-cart{width:auto;padding:0 10px}}.skip-cart .count{-webkit-border-radius:12px;-moz-border-radius:12px;-ms-border-radius:12px;-o-border-radius:12px;border-radius:12px;display:inline-block;top:-6px;position:relative;z-index:5;width:22px;height:22px;background:rgba(51,153,204,0.9);color:#FFFFFF;font-size:11px;line-height:22px;text-align:center;font-family:"PT Sans",Verdana,Arial,sans-serif}.skip-cart.no-count .count{display:none}@media only screen and (max-width:499px){.skip-cart .count{margin-left:-12px}}@media only screen and (min-width:771px){.skip-cart{color:#A0A0A2}.skip-cart .count{-webkit-border-radius:0px;-moz-border-radius:0px;-ms-border-radius:0px;-o-border-radius:0px;border-radius:0px;position:static;background:none;margin-left:0px;font-size:14px;width:auto}.skip-cart .count:before{content:'('}.skip-cart .count:after{content:')'}.skip-cart .count{color:#3399cc}}.footer .form-subscribe-header{display:none}@media only screen and (max-width:1240px){}#header-nav + .main-container{padding-top:0;padding-bottom:0}.homeslideshow{clear:both;margin-bottom:0.8%}.header-minicart{display:inline-block}@media only screen and (max-width:770px){.header-minicart{display:block}}.header-minicart .minicart-message{display:block;padding:10px}.header-minicart .empty{padding:10px;text-align:center}.header-minicart .minicart-wrapper{clear:both;position:relative}.header-minicart .minicart-wrapper:before,.header-minicart .minicart-wrapper:after{content:'';position:absolute;top:0px;left:0px;width:100%;height:100%;display:none}.header-minicart .minicart-wrapper:before{background-color:white;opacity:0.8;z-index:2}.header-minicart .minicart-wrapper:after{background-image:url("../images/opc-ajax-loader.gif");background-repeat:no-repeat;background-position:center;z-index:3}.header-minicart .block-cart{display:none}.header-minicart .block-subtitle{color:#636363;font-family:"PT Sans",Verdana,Arial,sans-serif;font-size:10px;font-weight:bold;line-height:1.4;padding:5px;text-align:center;text-transform:uppercase;margin-bottom:0px}.header-minicart .block-subtitle .close{width:40px;float:right;display:block;color:#636363;text-decoration:none;font-weight:normal;font-size:30px;position:absolute;top:-8px;right:-3px}.header-minicart #minicart-error-message{text-align:center;color:red;display:none}.header-minicart #minicart-success-message{text-align:center;color:green;display:none}@media only screen and (max-width:479px){.header-minicart a.skip-cart{z-index:1}}@media only screen and (max-width:770px){.header-minicart .minicart-wrapper:before{background-color:#EDEDED}}.search-autocomplete{left:0!important;overflow:visible!important;position:relative!important;top:15px!important;width:100%!important;z-index:200}@font-face{font-family:'PT Sans';font-style:normal;font-weight:400;src:local('PT Sans'),local('PTSans-Regular'),url(http://fonts.gstatic.com/s/ptsans/v8/ATKpv8nLYAKUYexo8iqqrg.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215,U+E0FF,U+EFFD,U+F000}@font-face{font-family:'PT Sans';font-style:normal;font-weight:700;src:local('PT Sans Bold'),local('PTSans-Bold'),url(http://fonts.gstatic.com/s/ptsans/v8/0XxGQsSc1g4rdRdjJKZrNPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215,U+E0FF,U+EFFD,U+F000}</style>]]>&#10;
+                    </text>
+                </action>
+            </block>
+        </reference>
+        
+
+        <reference name="header">
+            <block type="core/template" name="liveslideshow" template="live/slideshow/slideshow.phtml"></block>
+        </reference>
+
+        <reference name="jsfooter">
+            <!-- Live Home Scripts -->
+            <action method="addItem"><type>skin_js</type><name>js/home.js</name></action> 
+   		</reference>
+
+
+    </cms_index_index>
+
+    <print translate="label" module="page">
+        <label>All Pages (Print Version)</label>
+        <!-- Mage_Page -->
+        <block type="page/html" name="root" output="toHtml" template="page/print.phtml">
+
+            <!-- This block allows the print.phtml template to get the logo -->
+            <block type="page/html_header" name="header" as="header"/>
+
+            <block type="page/html_head" name="head" as="head">
+                <action method="addJs"><script>prototype/prototype.js</script></action>
+                <action method="addJs"><script>mage/translate.js</script></action>
+                <action method="addJs"><script>lib/ccard.js</script></action>
+                <action method="addJs"><script>varien/js.js</script></action>
+
+                <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
+                <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 8</if></action>
+                <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/print.css</stylesheet><params>media="print"</params></action>
+
+                <action method="addItem"><type>js</type><name>lib/ds-sleight.js</name><params/><if>lt IE 7</if></action>
+                <!--<action method="addItem"><type>skin_js</type><name>js/iehover-fix.js</name><params/><if>lt IE 7</if></action>-->
+            </block>
+
+            <block type="core/text_list" name="content" as="content" translate="label">
+                <label>Main Content Area</label>
+            </block>
+
+        </block>
+    </print>
+
+    <!-- Custom page layout handles -->
+    <page_empty translate="label">
+        <label>All Empty Layout Pages</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/empty.phtml</template></action>
+            <!-- Mark root page block that template is applied -->
+            <action method="setIsHandle"><applied>1</applied></action>
+            <action method="setLayoutCode"><name>empty</name></action>
+        </reference>
+    </page_empty>
+
+    <page_one_column translate="label">
+        <label>All One-Column Layout Pages</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+            <!-- Mark root page block that template is applied -->
+            <action method="setIsHandle"><applied>1</applied></action>
+            <action method="setLayoutCode"><name>one_column</name></action>
+        </reference>
+    </page_one_column>
+
+    <page_two_columns_left translate="label">
+        <label>All Two-Column Layout Pages (Left Column)</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <!-- Mark root page block that template is applied -->
+            <action method="setIsHandle"><applied>1</applied></action>
+            <action method="setLayoutCode"><name>two_columns_left</name></action>
+        </reference>
+    </page_two_columns_left>
+
+    <page_two_columns_right translate="label">
+        <label>All Two-Column Layout Pages (Right Column)</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+            <!-- Mark root page block that template is applied -->
+            <action method="setIsHandle"><applied>1</applied></action>
+            <action method="setLayoutCode"><name>two_columns_right</name></action>
+        </reference>
+    </page_two_columns_right>
+
+    <page_three_columns translate="label">
+        <label>All Three-Column Layout Pages</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/3columns.phtml</template></action>
+            <!-- Mark root page block that template is applied -->
+            <action method="setIsHandle"><applied>1</applied></action>
+            <action method="setLayoutCode"><name>three_columns</name></action>
+        </reference>
+    </page_three_columns>
+</layout>
