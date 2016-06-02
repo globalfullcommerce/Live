@@ -1,0 +1,29 @@
+<?php // SEARCH ?>
+<?php $catalogSearchHelper =  $this->helper('catalogsearch'); ?>
+<?php // CART PAGE ONLY ?>
+<script type="text/javascript">
+//<![CDATA[
+    $('region_id').setAttribute('defaultValue',  "<?php echo $this->getEstimateRegionId() ?>");
+    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>);
+    var coShippingMethodForm = new VarienForm('shipping-zip-form');
+            var countriesWithOptionalZip = <?php echo $this->helper('directory')->getCountriesWithOptionalZip(true) ?>;
+
+            coShippingMethodForm.submit = function () {
+                var country = $F('country');
+                var optionalZip = false;
+
+                for (i=0; i < countriesWithOptionalZip.length; i++) {
+                    if (countriesWithOptionalZip[i] == country) {
+                        optionalZip = true;
+                    }
+                }
+                if (optionalZip) {
+                    $('postcode').removeClassName('required-entry');
+                }
+                else {
+                    $('postcode').addClassName('required-entry');
+                }
+                return VarienForm.prototype.submit.bind(coShippingMethodForm)();
+    }
+//]]>
+</script>

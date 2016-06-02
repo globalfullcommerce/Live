@@ -1,0 +1,68 @@
+<?php // PRODUCT PAGE 
+
+$block = Mage::getBlockSingleton('Mage_Catalog_Block_Product_View');
+$productModel = Mage::getModel('catalog/product');
+$sku = Mage::registry('current_product')->getId();
+$product = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+?>
+<script type="text/javascript">
+//<![CDATA[
+	decorateTable('product-attribute-specs-table');
+
+    <?php if (Mage::registry('product')): ?>
+	var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+
+            <?php if($block->getJsonConfig()): ?>
+            var optionsPrice = new Product.OptionsPrice(<?php echo $block->getJsonConfig() ?>);
+            <?php endif; ?>
+
+           <?php endif; ?>
+
+//]]>
+</script>
