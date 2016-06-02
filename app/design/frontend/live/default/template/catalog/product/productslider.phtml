@@ -27,7 +27,7 @@ $_productCollection = Mage::getModel('catalog/category')->load($_categoryId)
 
                 <a class="product-name" href="<?php echo $_product->getProductUrl() ?>">
                 <?php echo $this->htmlEscape($_product->getName()); ?>
-
+                </a>
                 <?php
                 //$_product = $this->getProduct();
 
@@ -43,7 +43,9 @@ $_productCollection = Mage::getModel('catalog/category')->load($_categoryId)
                     $_swatchOuterHeight = $_dimHelper->getOuterHeight(Mage_ConfigurableSwatches_Helper_Swatchdimensions::AREA_LISTING);
                 ?>
                 <ul class="configurable-swatch-list configurable-swatch-<?php echo $_swatchAttribute->getAttributeCode() ?> clearfix">
+
                     <?php foreach ($_attrValues as $_optionValue => $_optionLabel): ?>
+
                         <?php
                         $_optionCode = Mage::helper('configurableswatches')->getHyphenatedString($_optionLabel);
                         $_swatchUrl = Mage::helper('configurableswatches/productimg')->getSwatchUrl($_product, $_optionLabel, $_swatchInnerWidth, $_swatchInnerHeight, $_swatchType);
@@ -62,7 +64,7 @@ $_productCollection = Mage::getModel('catalog/category')->load($_categoryId)
                             $_liClasses[] = 'filter-match';
                         }
                         $_liClass = (!empty($_liClasses)) ? ' ' . implode(' ', $_liClasses) : '';
-                        ?>
+                        ?>   
                     <li class="option-<?php echo $_optionCode; ?><?php echo $_liClass; ?>" data-product-id="<?php echo $_product->getId() ?>" data-option-label="<?php echo $_optionLabel ?>">
                         <span href="javascript:void(0)" name="<?php echo $_optionCode; ?>" class="<?php echo $_aClass ?>" title="<?php echo $_optionLabel; ?>"
                                style="height: <?php echo $_swatchOuterHeight ?>px; <?php if (!$_hasImage): ?>min-<?php endif; ?>width: <?php echo $_swatchOuterWidth ?>px;">
@@ -81,7 +83,7 @@ $_productCollection = Mage::getModel('catalog/category')->load($_categoryId)
 
                 <?php $productBlock = $this->getLayout()->createBlock('catalog/product_price');
                       echo $productBlock->getPriceHtml($_product); ?>
-                </a>
+
 
 
             </div>

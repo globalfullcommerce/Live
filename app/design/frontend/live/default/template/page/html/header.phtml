@@ -42,22 +42,26 @@
 </div>
 
 */ ?>
-
+<?php /* Top header */ 
+$top_left = $this->getLayout()->createBlock('cms/block')->setBlockId("topheader_left")->toHtml();
+$top_right = $this->getLayout()->createBlock('cms/block')->setBlockId("topheader_right")->toHtml();
+?>
+<?php if($top_left || $top_right): ?>
 <div id="top-header">
     <div class="container">
         <div class="left">
-        	<?php /* <p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?></p> */ ?>
-			<?php if($tmp = $this->getLayout()->createBlock('cms/block')->setBlockId("topheader_left")->toHtml()): ?>
-			    <?php echo $tmp; ?>
+			<?php if($top_left): ?>
+			    <?php echo $top_left; ?>
 			<?php endif; ?>
         </div>
         <div class="right">
-			<?php if($tmp = $this->getLayout()->createBlock('cms/block')->setBlockId("topheader_right")->toHtml()): ?>
-			    <?php echo $tmp; ?>
+			<?php if($top_right): ?>
+			    <?php echo $top_right; ?>
 			<?php endif; ?>
         </div>
     </div>
 </div>
+<?php endif; ?>
 
 <header id="header" class="page-header">
     <div class="page-header-container">

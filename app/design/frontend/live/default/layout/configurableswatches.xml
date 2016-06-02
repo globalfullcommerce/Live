@@ -38,6 +38,11 @@
         <reference name="product_list.after">
             <block type="configurableswatches/catalog_media_js_list" name="configurableswatches.media.js.list" />
         </reference>
+
+        <reference name="jsfooter">
+
+        </reference>
+
     </product_list>
 
     <catalog_category_default>
@@ -65,15 +70,25 @@
             <action method="setGalleryFilterHelper"><helper>configurableswatches/productimg</helper></action>
             <action method="setGalleryFilterMethod"><method>filterImageInGallery</method></action>
         </reference>
+        
         <reference name="product.info.media.after">
             <block type="configurableswatches/catalog_media_js_product" name="configurableswatches.media.js.product" />
         </reference>
+
         <reference name="product.info.options.configurable.renderers">
             <block type="configurableswatches/catalog_product_view_type_configurable_swatches" template="configurableswatches/catalog/product/view/type/options/configurable/swatches.phtml" />
         </reference>
+
         <reference name="product.info.options.configurable.after">
             <block type="core/template" template="configurableswatches/catalog/product/view/type/configurable/swatch-js.phtml" />
         </reference>
+
+        <reference name="jsfooter">
+
+        </reference>
+
+
+
     </PRODUCT_TYPE_configurable>
 
 </layout>

@@ -22,6 +22,9 @@
  * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
+document.observe('dom:loaded', function() {
+    var swatchesConfig = new Product.ConfigurableSwatches(spConfig);
+});
 
 var windowLoaded = false;
 Event.observe(window, 'load', function() { windowLoaded = true; });
@@ -40,7 +43,10 @@ Product.Config.prototype.configureForValues = function(){
     return;
 };
 
+
+
 Product.Config.prototype.origInitialize = Product.Config.prototype.initialize;
+
 Product.Config.prototype.initialize = function(config)
 {
     this.origInitialize(config);

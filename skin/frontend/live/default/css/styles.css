@@ -1167,6 +1167,8 @@ a.button:hover {
 	align-items: center;
 	margin: 0.1em 0;
 	justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 10%;
 }
 .productslider .configurable-swatch-list li {
 	float: left;
@@ -3564,12 +3566,6 @@ a.skip-link {
 		margin-left: 0px;
 		font-size: 14px;
 		width: auto;
-	}
-	.skip-cart .count:before {
-		content: '(';
-	}
-	.skip-cart .count:after {
-		content: ')';
 	}
 	.skip-cart .count, .skip-link.skip-active .count {
 		color: #3399cc;

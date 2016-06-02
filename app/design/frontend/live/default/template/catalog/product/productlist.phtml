@@ -3,7 +3,7 @@ $_categoryId = $this->getCategoryId();
 
 $_productCollection = Mage::getModel('catalog/category')->load($_categoryId)
     ->getProductCollection()
-    ->setPageSize(3)
+    ->setPageSize(12)
     ->addAttributeToSelect('*')
     ->addAttributeToFilter('status', 1)
     ->addAttributeToFilter('visibility', 4)
@@ -12,7 +12,7 @@ $_productCollection = Mage::getModel('catalog/category')->load($_categoryId)
 
 <div class="productlist">
     <h3><?php echo $this->__( $this->getLabel() ); ?></h3>
-    <?php foreach (range(1, 4) as $i) : ?>
+
     <?php foreach ($_productCollection as $_product): ?>
 
         <div class="item">
@@ -34,6 +34,6 @@ $_productCollection = Mage::getModel('catalog/category')->load($_categoryId)
 
 
         </div>
-    <?php endforeach; ?>
+
     <?php endforeach; ?>
 </div>

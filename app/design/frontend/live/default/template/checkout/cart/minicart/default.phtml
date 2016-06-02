@@ -123,7 +123,7 @@
                         <?php endif; //Can apply MSRP ?>
                     </td>
                 </tr>
-                <tr class="qty-wrapper">
+                <?php /*<tr class="qty-wrapper">
                     <th><?php echo $this->__('Qty'); ?></th>
                     <td>
                         <input
@@ -146,6 +146,7 @@
                         </button>
                     </td>
                 </tr>
+                */ ?>
             </tbody>
         </table>
 
@@ -155,7 +156,7 @@
         </a>
             |
             <?php if (!$this->isOnCheckoutPage()): ?>
-                <a href="<?php echo $this->getAjaxDeleteUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove This Item')) ?>"
+                <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove This Item')) ?>"
                    data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>"
                    class="remove">
                     <?php echo $this->__('Remove Item') ?>

@@ -90,18 +90,13 @@ Minicart.prototype = {
             cart.hideMessage();
             cart.showOverlay();
             $j.ajax({
-                type: 'POST',
-                dataType: 'json',
-                data: {form_key: cart.formKey},
                 url: el.attr('href')
             }).done(function(result) {
-                cart.hideOverlay();
-                if (result.success) {
-                    cart.updateCartQty(result.qty);
-                    cart.updateContentOnRemove(result, el.closest('li'));
-                } else {
-                    cart.showMessage(result);
-                }
+                console.log('excluir');
+                cart.updateCartQty(result.qty);
+                $j('#header-cart').load( "# #header-cart>*" );
+                $j('.skip-cart .count').load( '# .skip-cart .count' );
+
             }).error(function() {
                 cart.hideOverlay();
                 cart.showError(cart.defaultErrorMessage);

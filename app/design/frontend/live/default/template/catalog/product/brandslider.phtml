@@ -24,7 +24,6 @@ function clean($string) {
 <div class="brandslider">
     <h3><?php echo $this->__( $this->getLabel() ); ?></h3>
     <div class="owl-carousel">
-        <?php foreach (range(1, 4) as $i) : ?>
             <?php if (count($preparedManufacturers)) : ?>
                 <?php foreach($preparedManufacturers as $optionId => $value) : ?>
                     <?php $brandName = clean($value); ?>
@@ -34,6 +33,5 @@ function clean($string) {
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
-        <?php endforeach; ?>
     </div>
 </div>
