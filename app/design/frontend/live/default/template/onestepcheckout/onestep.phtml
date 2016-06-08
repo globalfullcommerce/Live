@@ -7,10 +7,39 @@
  * LIVE THEME
  */
 ?>
+<style>
+.sp-methods dt:first-child {
+    display: none;
+}
+#onestepcheckout-payment-method-wrapper br {
+    display: none !important;
+}
+.msg-pagseguro{
+    display: none !important;
+}
+</style>
+<script>
+
+var payment = new Payment('co-payment-form', '<?php echo $this->getUrl('checkout/onepage/savePayment') ?>');
+Element.prototype.triggerEvent = function(eventName)
+{
+    if (document.createEvent)
+    {
+        var evt = document.createEvent('HTMLEvents');
+        evt.initEvent(eventName, true, true);
+
+        return this.dispatchEvent(evt);
+    }
+
+    if (this.fireEvent)
+        return this.fireEvent('on' + eventName);
+}
+
+
+</script>
 <div class="onestepcheckout">
-<div class="page-head"><h1>Por favor, informe seus dados abaixo para concluir a compra, ou identifique-se ao lado.</h1></div>
 <?php echo $this->getChildHtml('auth'); ?>
-<div class="login-box"></div>
+
 <div class="col3-set">
     <form id="onestepcheckout-general-form" method="post" action="#" class="scaffold-form">
 
@@ -147,5 +176,8 @@
 </script>
 <script type="text/javascript">
 if(!BASE_URL) var BASE_URL = "<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>";
+$('pagseguro_parcelas').on('click', function(){
+    $('pagseguro_parcelas').select('option:selected');
+});
 </script>
 

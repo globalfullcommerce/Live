@@ -8,8 +8,14 @@
         <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
+
         <reference name="head">
+
             <action method="addItem" ifconfig="onestepcheckout/general/is_jquery"><type>skin_js</type><name>onestepcheckout/js/jquery.min.js</name></action>
+
+
+            <action method="addItem"><type>skin_js</type><name>js/opcheckout.js</name></action>
+
 
             <action method="addJs"><script>prototype/validation.js</script></action>
             <action method="addJs"><script>scriptaculous/builder.js</script></action>
@@ -20,6 +26,7 @@
             <action method="addJs"><script>varien/js.js</script></action>
             <action method="addJs"><script>varien/form.js</script></action>
 
+
             <action method="addItem"><type>skin_js</type><name>onestepcheckout/js/validation.js</name></action>
             <action method="addItem"><type>skin_js</type><name>onestepcheckout/js/onestepcheckout.js</name></action>
             <action method="addItem"><type>skin_js</type><name>onestepcheckout/js/login.js</name></action>
@@ -28,6 +35,29 @@
             <action method="addItem"><type>skin_js</type><name>onestepcheckout/js/payment.js</name></action>
             <action method="addItem"><type>skin_js</type><name>onestepcheckout/js/review.js</name></action>
             <action method="addItem"><type>skin_js</type><name>onestepcheckout/js/form.js</name></action>
+
+
+            <!-- Add js pagseguro transparente -->
+            <!--action method="addItem">
+                <type>js</type>
+                <name>ideasa/lib/checkout.js?1.1.2</name>
+            </action-->
+            <block type="core/text" name="google.cdn.jquery">
+                <action method="setText">
+                    <text><![CDATA[<script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>]]></text>
+                </action>
+            </block>
+            <action method="addItem">
+                <type>js</type>
+                <name>ideasa/lib/ideasa.js?1.16.3</name>
+            </action>
+             <action method="addItem">
+                <type>js</type>
+                <name>ideasa/lib/prototype/maskedinput.js?1.1.2</name>
+            </action>
+           
+
+
             <action method="addItem"><type>skin_css</type><name>css/styles.css</name></action>
             <action method="addItem"><type>skin_css</type><name>onestepcheckout/css/onestepcheckout.css</name></action>
         </reference>

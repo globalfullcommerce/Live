@@ -329,7 +329,7 @@ input[type=email], .main-container input[type=search], input[type=number], input
     -webkit-border-radius: 10px !important;
     -moz-border-radius: 10px !important;
     border-radius: 10px !important;
-    background-image: url(../images/compra-segura.png);
+    /*background-image: url(../images/compra-segura.png);*/
     background-repeat: no-repeat;
     background-position: bottom right;
 }
@@ -356,6 +356,8 @@ input[type=email], .main-container input[type=search], input[type=number], input
 }
 #onestepcheckout-payment-method-wrapper .step.a-item {
     text-transform: uppercase;
+    padding: 0.7em 1.4em 0em 0.5em !important;
+    margin-bottom: 0;
 }
 .ebanx-method .payment-method label .desc {
     color: #10B8E0;

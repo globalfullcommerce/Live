@@ -1,0 +1,229 @@
+.ideasa .form-list .fields {margin: 0 0 10px 0;width: 100%;}
+.form-list input.input-text,
+.form-list select {
+    height: 35px;
+    border-radius: 3px;
+    padding: 0;
+    width: 100%;
+    display: inline-block;
+    text-indent: 5px;
+}
+.form-list select {
+    text-indent: 0;
+}
+
+fieldset .form-list p{
+    margin: 0 0 0.5em 0;
+    padding: 0;
+}
+ul#payment_form_pagsegurodireto{
+    width: 100%;
+    overflow: visible;
+}
+#payment_form_pagsegurodireto .img-container-pagsegurodireto {
+    cursor: pointer;
+    display: inline-block;
+    padding: 3px;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    position: relative;
+    border: 1px solid transparent;
+}
+#payment_form_pagsegurodireto .img-container-pagsegurodireto.hot,
+#payment_form_pagsegurodireto .img-container-pagsegurodireto.select {
+    background-color: #F0F0F0;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+#payment_form_pagsegurodireto .imgMP {
+    cursor: pointer;
+    vertical-align: baseline;
+    position: absolute;
+    bottom: 5px;
+    left: 7px;
+}
+#payment_form_pagsegurodireto h4.titulo{
+    margin: 1em 0 0.3em;
+    border-width: 0;
+    font-size: 12px;
+}
+.divPagForm .ideasa-validade-cartao {
+    float: left;
+    margin-right: 1%;
+    width: 49%;
+}
+.divPagForm .ideasa-validade-cartao span {padding: 0 3%;}
+
+#payment_form_pagsegurodireto label{
+    clear: both;
+    float: inherit;
+}
+#payment_form_pagsegurodireto div.titular-cartao em {
+    color: #F00;
+}
+#payment_form_pagsegurodireto  option, #payment_form_pagsegurodireto  select{
+    outline: 0 none;
+    clear: both;
+    float: left;
+}
+#payment_form_pagsegurodireto  option{
+    color: #666666;
+    background-color: #fff;
+    border-bottom: 1px solid #999;
+    padding: 5px;
+    outline: 0 none;
+    border: 1px solid #E0E0E0;
+}
+
+#payment_form_pagsegurodireto  .ipgpagseguro-cvv {
+    float: left;
+}
+#payment_form_pagsegurodireto .divPagForm .cvv{
+    width: 50px;
+    float: left;
+}
+#payment_form_pagsegurodireto .divPagForm .bin{
+    width: 75px;
+    height:30px;
+}
+div.ideasa .bin-como-funciona a {
+    cursor: help;
+    font-size: 1em;
+}
+div.ideasa .bin-como-funciona {
+    float: left;
+    height: 30px;
+    margin-left: 10px;
+    width: 100px;
+    padding-top: 3px;
+}
+#payment_form_pagsegurodireto .divPagForm input.validate-cc-number{
+    background: url("../images/padlock_clean.png") no-repeat scroll 100% #FFFFFF;
+}
+#payment_form_pagsegurodireto placeholder {
+    color:#666666 !important;
+    font-weight: normal;
+    font-size: 12px;
+}
+#payment_form_pagsegurodireto input:-moz-placeholder  {
+    color:#999999 !important;
+    font-weight: normal;
+    font-size: 12px;
+}
+#payment_form_pagsegurodireto .divPagForm input.validate-cc-number:focus{
+    background: url("../images/padlock_closed.png") no-repeat scroll 100% #FFFFFF;
+}
+#payment_form_pagsegurodireto .divPagForm input.month {
+    clear: both;
+    float: left;
+}
+.divPagForm input.month,
+.divPagForm input.year{
+    width:40%;
+    text-align: center;
+    text-indent: 0;
+}
+#payment_form_pagsegurodireto .form-list label {
+    text-align: left;
+}
+#payment_form_pagsegurodireto .ideasa-parcelas {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+#payment_form_pagsegurodireto .ideasa-parcelas p{
+    clear: both;
+    position: relative;
+}
+#payment_form_pagsegurodireto .ideasa-parcelas input{
+    float: left;
+    clear:both;
+}
+#payment_form_pagsegurodireto span.titulo{
+    font-weight: bold;
+    font: bold 1.1em/1 "FuturaStdMedium",Futura,Helvetica,Arial,sans-serif;
+}
+#payment_form_pagsegurodireto .ideasa-alert {
+    float: left;
+    width:100%;
+}
+.divPagForm input.areacode {
+    width: 25%;
+    clear: both;
+    float: left;
+    text-indent: 0;
+    text-align: center;
+}
+.divPagForm input.fonenumber {
+    width: 70%;
+    float: right;
+}
+
+#ideasa a.boleto-link {
+    background-image: url('../images/boleto.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 30px;
+    width: 130px;
+}
+#ideasa.banco h1 {
+    margin-bottom: 15px;
+}
+
+#ideasa.banco ol {
+    list-style-position: outside;
+    list-style-type: decimal;
+    margin-bottom: 20px;
+    margin-left: 18px;
+}
+
+#ideasa.banco ol li {
+    margin-bottom: 5px;
+}
+
+#ideasa.banco p.desc {
+    background-color: #F0F0F0;
+    border: 1px solid #E0E0E0;
+    padding: 15px;
+}
+
+#ideasa.banco p.btn {
+    margin-top: 50px;
+    text-align: center;
+}
+#co-payment-form p.pagsegurodireto {
+    margin-top: 20px;
+    font-size: 10px;
+}
+#co-payment-form p.pagsegurodireto span.aviso {
+    padding-top: 5px;
+    display: inline-block;
+    width: 155px;
+    padding-left: 5px;
+}
+
+#payment_form_pagsegurodireto div.titular-cartao {
+    padding-top: 10px;
+}
+#payment_form_pagsegurodireto div.titular-cartao h4 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+p.msg-pagseguro {
+    background: url("../images/pagseguro.png") no-repeat scroll 100% transparent;
+    height: 60px;
+    border: 1px solid #b6b6b6;
+    border-radius: 3px;
+    display: inline-block;
+    width: 100%;
+    opacity: 0.7;
+    margin: 10px 0;
+}
+p.msg-pagseguro span {
+    margin: 10px;
+    display: inline-block;
+}

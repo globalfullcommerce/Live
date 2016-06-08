@@ -39,9 +39,20 @@
 //]]>
 </script>
 <![endif]-->
+
+
 <?php echo $this->getCssJsHtml() ?>
 <?php echo $this->getChildHtml() ?>
 <?php echo $this->getIncludes() ?>
+
+
+<?php if (Mage::app()->getFrontController()->getAction()->getFullActionName()==onestepcheckout_index_index) : ?>
+	<?php // TRANSLATOR ?>
+	<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+	<script type="text/javascript" src="/js/ideasa/lib/checkout.js?1.1.2"></script>
+<?php endif; ?>
+
+
 
 <script>
 <?php $session = Mage::getSingleton('core/session');

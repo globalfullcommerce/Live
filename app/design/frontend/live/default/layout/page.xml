@@ -37,12 +37,12 @@
             <block type="page/html_head" name="head" as="head">
 
 	           	<!-- rwd js here -->
-                <action method="addJs"><script>prototype/prototype.js</script></action>
-                <action method="addJs"><script>lib/jquery/jquery-1.10.2.min.js</script></action>
-                <action method="addJs"><script>lib/jquery/noconflict.js</script></action>
-                <action method="addJs"><script>lib/ccard.js</script></action>
-                <action method="addJs"><script>mage/translate.js</script></action>
-                <action method="addJs"><script>mage/cookies.js</script></action>
+                <action method="addItem"><type>js</type><name>prototype/prototype.js</name></action>
+                <action method="addItem"><type>js</type><name>lib/jquery/jquery-1.10.2.min.js</name></action>
+                <action method="addItem"><type>js</type><name>lib/jquery/noconflict.js</name></action>
+                <action method="addItem"><type>js</type><name>lib/ccard.js</name></action>
+                <action method="addItem"><type>js</type><name>mage/translate.js</name></action>
+                <action method="addItem"><type>js</type><name>mage/cookies.js</name></action>
             
                 <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
 
